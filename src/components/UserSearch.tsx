@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery } from '@tanstack/react-query'
 import { useEffect, useState } from 'react'
 import { fetchUser, searchUser } from '../api/github'
 import UserCard from './UserCard'
@@ -31,6 +31,26 @@ export default function UserSearch() {
     enabled: !!submittedUsername,
     retry: false,
   })
+
+  // Not implemented, but as example
+  //     const someMutation = useMutation({
+  //       mutationFn: () => {
+  //         console.log('call some put request')
+  //       },
+  //       onSuccess: () => {
+  //         console.log('Do work after success')
+  //         refetch()
+  //       },
+  //       onError: (error) => {
+  //         console.error(error.message)
+  //       },
+  //     })
+
+  //     function handleMutation() {
+  //       someMutation.mutate() // calls mutationFn
+  //     }
+
+  //   someMutation.isIdle, someMutation.isPending, etc
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
