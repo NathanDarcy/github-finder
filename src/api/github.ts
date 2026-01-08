@@ -10,3 +10,16 @@ export async function fetchUser(username: string) {
   const data = await response.json()
   return data
 }
+
+export async function searchUser(query: string) {
+  const response = await fetch(
+    `${import.meta.env.VITE_GITHUB_API_URL}/search/users?q=${query}`
+  )
+
+  if (!response.ok) {
+    throw new Error('user not found')
+  }
+
+  const data = await response.json()
+  return data.items
+}
